@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //  Cannot modify price once set.                                                                   To Do
 //  A method to check if an item exists, since that has to be done a lot.                           Done
 
-public class Store {
+abstract class Store {
     protected ArrayList<String> items; // asssuming a store has unlimited stock, an arraylist of strings should be
                                        // sufficient
     protected ArrayList<Integer> stock; // a second arrlist to keep track of the stock
@@ -33,11 +33,11 @@ public class Store {
     public int exists(String s) {
         int location = items.indexOf(s);
         if (location == -1) {
-            System.out.println("That item is invalid.");
+//            System.out.println("That item is invalid.");
             return -1;
         }
-        if (stock.get(location) == 0) {
-            System.out.println("That item is out of stock.");
+        else if (stock.get(location) == 0) {
+//            System.out.println("That item is out of stock.");
             return 0;
         } else
             return 1;

@@ -3,7 +3,9 @@ public class CardPayment extends Payment {
     // card.
     public CardPayment() {
     };
-
+    public CardPayment(Customer c, Store s, Order o) {
+        super(c,s,o);
+    }
     public void acknowledge() {
         System.out.println("A payment has been made through Bank Card.");
     }
