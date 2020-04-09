@@ -5,7 +5,7 @@ public class OnlinePayment extends Payment {
     }
 
     public OnlinePayment(Customer c, Store s, Order o) {
-        super(c,s,o);
+        super(c, s, o);
     }
 
     public void acknowledge() {
