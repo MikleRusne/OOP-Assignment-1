@@ -1,7 +1,7 @@
-class OutletStore extends Store {
+public class OutletStore extends Store {
     // an outlet must be physically entered to shop, so...
-    public void sale(String s) {
-        super.sale(s);
+    public void sale(Integer n, String s, String c) {
+        super.sale(n, s ,c);
         System.out.println("Customer has been provided a building.");
     }
 

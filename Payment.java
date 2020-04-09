@@ -1,16 +1,35 @@
 class Payment {
-    protected double value;
-
     public Payment() {
     };
 
-    public Payment(double value) {
-        this.value = value;
+    public Payment(Customer c, Store s, Order o) {
+        String oname = o.get_name();
+        Integer onumber = o.get_number();
+        String cname = c.get_name();
+        double balance = c.get_money();
+        if (s.exists(oname) == 1) {
+            if (onumber <= s.get_stock(oname)) {
+                double price = s.get_price(oname) * onumber;
+                if ((price) < balance) {
+                    c.subtract_money(price);
+                    s.get_item(oname, onumber);
+                    acknowledge();
+                    s.sale(onumber, oname, cname);
+                } else {
+                    System.out.println(cname + "does not have enough money.");
+                }
+            } else {
+                System.out.println("Insufficient stock of the item " + o.get_name()+ ".");
+            }
+        } else {
+            System.out.println("The item " + o.get_name()+ " does not exist.");
+        }
     }
 
-    public abstract 0acknowledge(){
-        //the way a payment is acknowledged depends on the medium, so all children of payments shall have different method of acknowledgement.
-    }
+    public void acknowledge() {
+    };
+    // the way a payment is acknowledged depends on the medium, so all children of
+    // payment shall have different method of acknowledgement.
 
     // Since all payment has one thing in common, money being transferred.
     // Obsolete now that there's a function to make payment
@@ -18,8 +37,4 @@ class Payment {
     // return value;
     // }
     // A function to combine the above functions into one
-    public double make_payment() {
-        acknowledge();
-        return value;
-    }
 }

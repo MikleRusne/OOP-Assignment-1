@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //  Cannot modify price once set.                                                                   To Do
 //  A method to check if an item exists, since that has to be done a lot.                           Done
 
-class Store {
+public class Store {
     protected ArrayList<String> items; // asssuming a store has unlimited stock, an arraylist of strings should be
                                        // sufficient
     protected ArrayList<Integer> stock; // a second arrlist to keep track of the stock
@@ -13,8 +13,8 @@ class Store {
     protected String address; // outlets must have address. But for online stores, the website URL is the
                               // address
 
-    public void sale(String s) {
-        System.out.println(s + " has been sold");
+    public void sale(Integer n, String s, String c) {
+        System.out.println(((int) n ) + " amount of " +s+ " has been sold to " + c+ ".");
     }
 
     public Store(String address) {
@@ -64,7 +64,6 @@ class Store {
                 // removing occurrences from stock
                 stock.set(location, (stock.get(location)) - number);
                 System.out.println(number + " of the item " + s + " was/were gotten.");
-                this.sale(s);
             }
         }
     }
