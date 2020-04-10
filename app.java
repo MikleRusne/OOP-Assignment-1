@@ -150,9 +150,12 @@ public class app {
                 }
                 break;
             case 5: // Show Payment records
-                for (Payment payment : payments) {
-                    payment.details();
-                }
+                if (payments.size() != 0) {
+                    for (Payment payment : payments) {
+                        payment.details();
+                    }
+                } else
+                    System.out.println("No payments have been made yet.");
                 break;
             case 6:
                 return 1;
